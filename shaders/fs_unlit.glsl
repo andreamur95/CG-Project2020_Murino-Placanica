@@ -4,12 +4,15 @@
 // to pick one. mediump is a good default. It means "medium precision"
 precision mediump float;
 
-uniform vec4 u_color;
+in vec2 uvFS;
+out vec4 outColor;
+
+uniform sampler2D u_texture;
 
 // we need to declare an output for the fragment shader
-out vec4 outColor;
+
 
 void main() {
   // Just set the output to a constant 
-  outColor = u_color;
+  outColor = texture(u_texture, uvFS);
 }
