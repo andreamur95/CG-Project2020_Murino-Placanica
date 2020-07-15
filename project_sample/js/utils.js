@@ -56,7 +56,8 @@ createProgram:function(gl, vertexShader, fragmentShader) {
     const expandFullScreen = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      console.log(canvas.width+" "+window.innerWidth);
+	  console.log(canvas.width+" "+window.innerWidth);
+	  document.getElementById(q).style.width =  80%;
 
     };
     expandFullScreen();

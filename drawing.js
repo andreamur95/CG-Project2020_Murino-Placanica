@@ -8,6 +8,7 @@ var lastUpdateTime;
 var boatModel;
 var rockModel;
 var rock2Model;
+var oceanModel;
 
 //floor
 var floorPositions;
@@ -67,7 +68,7 @@ var linearDir = 0;
 var linearVel = 0;
 var velX = 0;
 var velZ = 0;
-var maxLinearVel =  0.01;
+var maxLinearVel = 0.01;
 var linearAcc = 0.0001;
 var linearDrag = 0.005;
 
@@ -80,10 +81,14 @@ var angularDrag = 0.01;
 modelStr[0] = 'Assets/Boat/Boat.obj';
 modelStr[1] = 'Assets/Rocks/Rock1/rock1.obj';
 modelStr[2] = 'Assets/Rocks/Rock2/Rock_1.obj';
+modelStr[3] = 'Assets/ocean-obj/ocean.obj';
+//modelStr[3] = 'Assets/ocean2/hdri-ca-sky.obj';
 
 modelTexture[0] = 'Assets/Boat/textures/boat_diffuse.bmp';
 modelTexture[1] = 'Assets/Rocks/Rock1/textures/rock_low_Base_Color.png';
 modelTexture[2] = 'Assets/Rocks/Rock2/Rock_1_Tex/Rock_1_Base_Color.jpg';
+modelTexture[3] = 'Assets/ocean-obj/woter.jpg';
+//modelTexture[3] = 'Assets/ocean2/CA-Sky-2016-04-15-11-30-am.jpg';
 
 modelTexture[4] = 'Assets/Sea/sea.jpg'
 
@@ -142,9 +147,10 @@ class Item {
 }
 
 //objects
-var rock = new Item(1.0, 0.0, -3.0, 0.0, 0.0, 0.0, 1.0 / 20.0);
-var boat = new Item(0.0, 0, 0.0, 90.0, 0.0, 0.0, 1.0 / 1000.0);
-var rock2 = new Item(-1.0, 0.0, -3, 0.0, 0.0, 0.0, 1.0 / 20);
+var rock = new Item(1.0, -0.5, -3.0, 0.0, 0.0, 0.0, 1.0 / 20.0);
+var boat = new Item(0.0, -0.15, 0.0, 90.0, 0.0, 0.0, 1.0 / 1000.0);
+var rock2 = new Item(-1.0, -0.4, -3, -30.0, 0.0, 0.0, 1.0 / 10.0);
+var ocean = new Item(0.0, -0.02, 0.0, 90.0, 0.0, 0.0, 100.0);
 
 function isPowerOf2(value) {
   return (value & (value - 1)) == 0;
@@ -152,7 +158,7 @@ function isPowerOf2(value) {
 
 function main() {
 
-  //utils.resizeCanvasToDisplaySize(gl.canvas);
+  utils.resizeCanvasToDisplaySize(gl.canvas);
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
   setFloorCoord();
@@ -160,6 +166,7 @@ function main() {
   object[0] = boat;
   object[1] = rock;
   object[2] = rock2;
+  object[3] = ocean;
 
   boat.setAttr(boatModel.vertices, boatModel.vertexNormals, boatModel.indices, boatModel.textures);
   boat.setMaterialColor([1.0, 1.0, 1.0]); // set material color for boat
@@ -170,6 +177,8 @@ function main() {
   rock2.setAttr(rock2Model.vertices, rock2Model.vertexNormals, rock2Model.indices, rock2Model.textures);
   rock2.setMaterialColor([1.0, 1.0, 1.0]);
 
+  ocean.setAttr(oceanModel.vertices, oceanModel.vertexNormals, oceanModel.indices, oceanModel.textures);
+  ocean.setMaterialColor([1.0, 1.0, 1.0]);
 
 
 
@@ -187,10 +196,11 @@ function main() {
   objectWorldMatrix[0] = boat.buildWorldMatrix(); //boat WorldMatrix
   objectWorldMatrix[1] = rock.buildWorldMatrix(); //rock WorlMatrix
   objectWorldMatrix[2] = rock2.buildWorldMatrix();
+  objectWorldMatrix[3] = ocean.buildWorldMatrix();
 
 
   perspectiveMatrix = utils.MakePerspective(90, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
-  viewMatrix = utils.MakeView(0, 0.0, 3.0, 0.0, 0.0);
+  viewMatrix = utils.MakeView(0.0, 1.0, 1.0, 15.0, 0.0);
 
   setBuffers();
   drawScene();
@@ -247,10 +257,12 @@ async function init() {
 
   //###################################################################################
   //This loads the obj model in the rockModel variable
-  var rock2ObjStr = await utils.get_objstr(baseDir + modelStr[1]);
+  var rock2ObjStr = await utils.get_objstr(baseDir + modelStr[2]);
   rock2Model = new OBJ.Mesh(rock2ObjStr);
   //###################################################################################
 
+  var oceanObjStr = await utils.get_objstr(baseDir + modelStr[3]);
+  oceanModel = new OBJ.Mesh(oceanObjStr);
 
   initControls(canvas);
 
@@ -409,10 +421,12 @@ function setFloorCoord() {
   floorIndices = [0, 1, 2, 3];
 
   floorTextureCoordinates =
-    [-0.001, 0.001, 0.5,
-      0.001, 0.001, 0.5,
-    -0.001, -0.001, 0.5,
-      0.001, -0.001, 0.5
+    [0, 0,
+      0, 1,
+      1, 0,
+      0, 1,
+      1, 1,
+      1, 0,
     ]
 }
 
@@ -460,7 +474,7 @@ function drawObjects() {
   gl.uniform1i(textLocation[1], textures[4]);
 
   gl.bindVertexArray(vaos[4]);
-  gl.drawElements(gl.TRIANGLE_STRIP, floorIndices.length, gl.UNSIGNED_SHORT, 0);
+  //gl.drawElements(gl.TRIANGLE_STRIP, floorIndices.length, gl.UNSIGNED_SHORT, 0);
 }
 
 var counter = 0;
@@ -478,15 +492,15 @@ function animate(item) {
 
   /* depending on which object we want to animate we change the worldmatrix of the object */
   //objectWorldMatrix[0] = utils.MakeWorld(0.0, item.y, item.z, item.Rx, item.Ry, item.Rz, item.S);
-  counter+= 0.005;
+  counter += 0.005;
   //item.z = counter % 2;
   //item.y = counter;
 
   //(0, -1, 2, 45, 0)
   //item.z -= 0.002;
-  viewMatrix = utils.MakeView(cx + item.x,  cy + 1,  2 + item.z, camElev,  0);
+  viewMatrix = utils.MakeView(cx + item.x, cy + 1, 2 + item.z, camElev, 0);
 
-   //<---- la barca si muove verso la z negativa
+  //<---- la barca si muove verso la z negativa
   //item.y += 0.002;
 
   objectWorldMatrix[0] = item.buildWorldMatrix();
@@ -504,6 +518,7 @@ function drawScene() {
   gl.clearColor(0.85, 0.85, 0.85, 1.0);
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
   gl.enable(gl.DEPTH_TEST);
+  
 
   // DRAW THE OBJECTS IN THE SCENE
   drawObjects();
@@ -533,11 +548,11 @@ var keyFunctionDown = function (e) {
         break;
 
       case 40: //DOWN ARROW KEY DOWN
-
+        linearDir = - 1;
 
         break;
 
-        //camera controls
+      //camera controls
       case 87:
         camElev += 5;
         console.log(camElev)
@@ -564,7 +579,7 @@ var keyFunctionUp = function (e) {
         linearDir = 0;
         break;
       case 40: //DOWN ARROW KEY DOWN
-        linearDir = - 1;
+        linearDir = 0;
         break;
     }
   }
@@ -579,10 +594,10 @@ function initControls(canvas) {
 
 
 function boatDynamic(currentTime) {
-  console.log(linearVel);
+  //console.log(linearVel);
   //boat turning
-  angularVel += turningDir*angularAcc;
-  if(Math.abs(angularVel) >= maxAngularVel)
+  angularVel += turningDir * angularAcc;
+  if (Math.abs(angularVel) >= maxAngularVel)
     angularVel = Math.sign(angularVel) * maxAngularVel;
 
   //angular velocity degradation
@@ -592,7 +607,7 @@ function boatDynamic(currentTime) {
 
   //boat speed
   linearVel += linearDir * linearAcc;
-  if(Math.abs(linearVel) >= maxLinearVel)
+  if (Math.abs(linearVel) >= maxLinearVel)
     linearVel = Math.sign(linearVel) * maxLinearVel;
 
   //linear vel degradation
@@ -602,11 +617,14 @@ function boatDynamic(currentTime) {
   velX = - linearVel * Math.cos(utils.degToRad(boat.Rx));
   velZ = - linearVel * Math.sin(utils.degToRad(boat.Rx));
 
+
+
   boat.x += velX;
   boat.z += velZ;
 
+
   //simple boat "wobbling" around its y axis, must be implemented better
-  if(Math.random() > 0.8) {
+  if (Math.random() > 0.8) {
     boat.Ry += Math.sin(utils.degToRad(currentTime)) / 8;
   }
 
@@ -615,7 +633,7 @@ function boatDynamic(currentTime) {
 
 function dirLightChange(value, type) {
   if (type == 'alpha')
-    dirLightAlpha = -utils.degToRad(value);    
+    dirLightAlpha = -utils.degToRad(value);
   else
     dirLightBeta = -utils.degToRad(value);
 
@@ -633,22 +651,23 @@ function onColorChange(value, type) {
   var r = result[0] / 255.0;
   var g = result[1] / 255.0;
   var b = result[2] / 255.0;
-  if(type == 'ambient')
+  if (type == 'ambient')
     ambientLight = [r, g, b];
-    else if (type == 'directional')
-      directionalLightColor = [r, g, b];
-      else if(type == 'material')
-        boat.setMaterialColor([r, g ,b]);
-        else
-          specularColor = [r, g, b];
+  else if (type == 'directional')
+    directionalLightColor = [r, g, b];
+  else if (type == 'material')
+    boat.setMaterialColor([r, g, b]);
+  else
+    specularColor = [r, g, b];
   drawObjects();
 }
 
-function onSpecShineChange(value){
+function onSpecShineChange(value) {
   specShine = value;
   drawObjects();
 }
 
 
 window.onload = init;
+
 

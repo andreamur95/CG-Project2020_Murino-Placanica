@@ -9,8 +9,9 @@
     }
 
     canvas {
+      
       display: block;
-      background-color: white;
+
     }
   </style>
   <script type="text/javascript" src="./utils.js"></script>
@@ -57,32 +58,34 @@
 </head>
 
 <body>
-  <table>
+  <table style="width: 100%; height:100%">
     <tr>
-      <td>
-        <canvas id="c" width="1030" height="520" style="background-color: grey; width: auto;">
+      <td id="q" style="width: 80%;">
+        <canvas id="c" style="width:100%; height:100%; background-color: grey; ">
           Your browser does not support the HTML5 canvas element.
         </canvas>
-        
-        <div id="legend"
-          style="position: absolute; z-index: 1; left: 40px; bottom: 50px; width:300px; height:100px; background-color: white; border-style: dashed; border-color: red; opacity: 0.7; padding: 5px 10px 5px 10px; overflow:auto">
-          <p style="font-family: Courier New">
-            <b>INFO</b>
-          
-            <p>FPS: <b id="FPS"></b></p> 
-            
-          
-          </p>
-        </div> 
       </td>
 
-      <td style="background-color: white; font-family: courier; padding: 5px;">
+      <div id="legend"
+        style="position: absolute; z-index: 1; left: 40px; top: 50px; width:300px; height:100px; background-color: white; border-style: dashed; border-color: darkblue; opacity: 0.7; padding: 5px 10px 5px 10px; overflow:auto">
+        <p style="font-family: Courier New">
+          <b>INFO</b>
+
+        <p>FPS: <b id="FPS"></b></p>
+
+
+        </p>
+      </div>
+
+
+      <td
+        style="background-color: white; font-family: 'Courier New', Courier, monospace; padding: 5px; height: 100%; width: 20%; margin-left: 80%;">
         <p>
-        <h2> Options Setter </h2>
+        <h2> <b>Control Panel</b> </h2>
         </p>
         <!--
           <p><b> Radio buttons </b></p>
-           ciao  <form> 
+             <form> 
            
             <input type="radio" name="light" id="yesl" onchange="onRadioButtonChange(this.value);" value="1" checked>
             Option 1 <br />
@@ -90,9 +93,9 @@
             <input type="radio" name="light" onchange="onRadioButtonChange(this.value);" value="3"> Option 3 <br />
           </form> 
           <p></p> -->
-          <b>Ambient Light Color</b>
+        <b>Ambient Light Color</b>
         <div id="slider4">
-          <input type="color" id="favcolor" name="favcolor" value="#7F7F7F"
+          <input type="color" id="favcolor" name="favcolor" value="#FFFFFF"
             oninput="onColorChange(this.value, 'ambient')">
           <br>
         </div>
@@ -137,9 +140,9 @@
             oninput="dirLightChange(this.value,'alpha');" />
           1000 <br />
         </div>
-        
+
         <p></p>
-        
+
         <b> Enable sound </b><br>
         <input type="checkbox" id="chbx" onclick="onSoundBoxChange(this.checked);" /> Sound ON<br />
         <!-- <p><b> Drop-down list</b></p>
@@ -171,18 +174,17 @@
         audio.play();
       }
     }
-    
+
     before = 0.0;
     requestAnimationFrame(
       function loop() {
-        console.log('entro');
         now = Date.now();
         fps = Math.round(1000 / (now - before));
         before = now;
         requestAnimationFrame(loop);
         if (nFrame % 10 == 0) { document.getElementById("FPS").innerHTML = fps; }
       });
-      
+
 
 
   </script>

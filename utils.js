@@ -56,12 +56,16 @@ createProgram:function(gl, vertexShader, fragmentShader) {
     const expandFullScreen = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      console.log(canvas.width+" "+window.innerWidth);
+	  console.log(canvas.width+" "+window.innerWidth);
+
+	  
+	  
         
     };
-    expandFullScreen();
+	expandFullScreen();
     // Resize screen when the browser has triggered the resize event
-    window.addEventListener('resize', expandFullScreen);
+	window.addEventListener('resize', expandFullScreen);
+	
 },
 //**** MODEL UTILS
 	// Function to load a 3D model in JSON format

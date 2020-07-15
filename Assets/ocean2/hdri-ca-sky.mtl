@@ -1,0 +1,465 @@
+newmtl Clamp_Body
+Kd 0 0.25098 0.501961
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Clamp_Center_Dots
+Kd 0.745098 0.666667 0.352941
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Clamp_Lower_Casing
+Kd 0.792157 0.823529 0.12549
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Clamp_Lower_Squares
+Kd 0.909804 0.509804 0.517647
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Clamp_Upper_Casing
+Kd 0.509804 0.878431 0.909804
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Clamp_Upper_Casing_Slots
+Kd 0.32549 0.243137 0.709804
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Clamp_Upper_Squars
+Kd 0.909804 0.509804 0.517647
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Connector_Bolts
+Kd 0.784314 0.784314 0.862745
+Ke 0 0 0
+Ka 0.3 0.3 0.3
+Ks 0.35 0.35 0.35
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Default
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Motor_Vortex_Tunnel
+Kd 0.847059 0.847059 0.847059
+Ke 0 0 0
+Ka 0.7 0.7 0.7
+Ks 0.7 0.7 0.7
+Ns 300
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Propulsion_Connector_Disc
+Kd 0.145098 0.145098 0.145098
+Ke 0 0 0
+Ka 0.7 0.7 0.7
+Ks 0.6 0.6 0.6
+Ns 600
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Propulsion_Connector_Disc_Inner
+Kd 0.145098 0.145098 0.145098
+Ke 0 0 0
+Ka 0.7 0.7 0.7
+Ks 0.6 0.6 0.6
+Ns 600
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Propulsion_Connector_Disc_Inner_Tidbits
+Kd 1 0 0
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Propulsion_Connector_Disc_NS_Slots
+Kd 0.776471 0.756863 0.0901961
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Propulsion_Connector_Disc_Tidbits
+Kd 0.262745 0.976471 0.0235294
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Shell_Bottom_Clamps
+Kd 0.784314 0.784314 0.862745
+Ke 0 0 0
+Ka 0.3 0.3 0.3
+Ks 0.35 0.35 0.35
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Shell_Bottom_Track
+Kd 0.145098 0.145098 0.145098
+Ke 0 0 0
+Ka 0.7 0.7 0.7
+Ks 0.6 0.6 0.6
+Ns 600
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Shell_Inner
+Kd 0.247059 0.247059 0.247059
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Shell_Inner_Rims
+Kd 0.435294 0.0588235 0.0666667
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Shell_Outer
+Kd 0.898039 0.898039 0.898039
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Shell_Side_Slot_Rails
+Kd 0.32549 0.376471 0.435294
+Ke 0 0 0
+Ka 0.5 0.5 0.5
+Ks 0.95 0.95 0.95
+Ns 289
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Shell_Side_Slots
+Kd 0.607843 0.607843 0.607843
+Ke 0 0 0
+Ka 0.5 0.5 0.5
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Shell_Support_Bottom
+Kd 0.282353 0.282353 0.32549
+Ke 0 0 0
+Ka 0.4 0.4 0.4
+Ks 0.405 0.405 0.405
+Ns 200
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Base
+Kd 0.109804 0.109804 0.109804
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 0
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Base_Pipes
+Kd 0.286275 0.411765 0.294118
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.13 0.13 0.13
+Ns 180
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Central_Rings
+Kd 0.439216 0.423529 0.411765
+Ke 0 0 0
+Ka 0.5 0.5 0.5
+Ks 0.95 0.95 0.95
+Ns 9
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Centrifuge
+Kd 0.788235 0.223529 0.0627451
+Ke 0 0 0
+Ka 0.6 0.6 0.6
+Ks 0.8 0.8 0.8
+Ns 500
+Tr 0
+d 1
+Ni 1
+Tf 0.6 0.6 0.6
+map_Ks Drone/Concept/copper-material-720-bump.jpg
+
+newmtl Centrifuge_Rings
+Kd 0.752941 0.752941 0.752941
+Ke 0 0 0
+Ka 1 1 1
+Ks 0.4 0.4 0.4
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Collider_Point
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Curb_Top
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Default
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Inner_Conduit
+Kd 0.0588235 0.917647 0.72549
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Magnet_Pulse_Bar
+Kd 0.0470588 0.0470588 0.0470588
+Ke 0 0 0
+Ka 0.8 0.8 0.8
+Ks 0.3 0.3 0.3
+Ns 560
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Middle_Conduit
+Kd 0.486275 0.784314 0.192157
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Motor_Vortex_Tunnel
+Kd 0.847059 0.847059 0.847059
+Ke 0 0 0
+Ka 0.7 0.7 0.7
+Ks 0.7 0.7 0.7
+Ns 300
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Outer_Conduit
+Kd 0.329412 0.027451 0.945098
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Propulsion_Connector_Disc
+Kd 0.145098 0.145098 0.145098
+Ke 0 0 0
+Ka 0.7 0.7 0.7
+Ks 0.6 0.6 0.6
+Ns 600
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Radial_Bars
+Kd 0.913725 0.913725 0.847059
+Ke 0 0 0
+Ka 0.15 0.15 0.15
+Ks 0.9 0.9 0.9
+Ns 639
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Ball
+Kd 0.494118 0.494118 0.494118
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd HDRI/CA-Sky-2016-04-15-11-30-am-thumb.jpg
+
+newmtl Box
+Kd 0.94902 0.0431373 0.0627451
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+map_Kd HDRI/CA-Sky-2016-04-15-11-30-am-thumb.jpg
+
+newmtl Collider_Point
+Kd 0.784314 0.784314 0.784314
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
+newmtl Surface
+Kd 0.94902 0.0431373 0.0627451
+Ke 0 0 0
+Ka 1 1 1
+Ks 0 0 0
+Ns 400
+Tr 0
+d 1
+Ni 1
+Tf 1 1 1
+
