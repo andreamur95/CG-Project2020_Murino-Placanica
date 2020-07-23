@@ -19,7 +19,7 @@ void main() {
   // gl_Position is a special variable a vertex shader
   // is responsible for setting
   // it is the position of the vertex in CLIP SPACE COORDINATES
-  gl_Position = matrix * vec4(a_position, 1.0); // questa volta dobbiamo creare il vec4 perché a_position è fatto da 3 elementi
-  // ricorda che gl_position è definito come un vec4 perché è in clipSpace (x,y,z,w) ecco perchè devi rimanere coerente!
-  // il terzo elemento è la z-coordinate e l'ultimo elemento è w 
+  gl_Position = matrix * vec4(a_position, 1.0); // a_position is composed by 3 elements.
+  //  gl_position is defined as vec4 because it is in clipSpace (x,y,z,w), so that we have to be coherent.
+ 
 }

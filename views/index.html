@@ -55,14 +55,16 @@
     b {
       color: darkblue;
     }
-
-    
   </style>
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <script type="text/javascript" src="./utils.js"></script>
   <script type="text/javascript" src="./cubeDefinition.js"></script>
   <script type="text/javascript" src="./drawing.js"></script>
   <script type="text/javascript" src="./webgl-obj-loader.min.js"></script>
   <script>
+
     function HEX2RGB(hex) {
       "use strict";
       if (hex.charAt(0) === '#') {
@@ -93,10 +95,37 @@
       }
       return [r, g, b];
     }
-    function enableMusic() {
-      var audioCheck = document.getElementById('chbx');
-      audioCheck.checked = true;
+    function onSoundBoxChange(e) {
+      var audio = document.getElementById('audioPirate');
+      if (e.checked) {
+        audio.src = "Assets/pirate.mp3";
+        audio.loop = true;
+        audio.play();
+      }
+      else {
+        audio.src = "";
+        audio.play();
+      }
+      e.blur();
+    }
 
+    before = 0.0;
+    requestAnimationFrame(
+      function loop() {
+        now = Date.now();
+        fps = Math.round(1000 / (now - before));
+        before = now;
+        requestAnimationFrame(loop);
+        if (nFrame % 10 == 0) { document.getElementById("FPS").innerHTML = fps; }
+      });
+
+
+    function pageLoader() {
+      if (pageReady) {
+        document.getElementById("t").style.visibility = "visible";
+        document.getElementById("legend").style.visibility = "visible";
+        document.getElementById("Loading").style.visibility = "hidden";
+      }
     }
   </script>
 
@@ -108,29 +137,41 @@
     <h1> Loading Game... </h1>
   </div>
 
-  
+
 
   <table id="t" style="width: 100%; height:100%; visibility: hidden;">
     <tr>
       <td id="q" style="width: 80%;">
         <canvas id="c" style="width:100%; height:100%; background-color: grey; ">
-          
+
           Your browser does not support the HTML5 canvas element.
         </canvas>
         <div id="Lost" style="visibility: hidden;">
           <h1> You Lost! </h1>
-          <input type="button" onclick="window.location.reload()" value="Play again" ></input>
+          <input type="button" onclick="window.location.reload()" value="Play again"></input>
         </div>
       </td>
 
 
 
       <div id="legend"
-        style="position: absolute; z-index: 1; left: 40px; top: 50px; width:300px; height:100px; background-color: white; border-style: dashed; border-color: darkblue; opacity: 0.7; padding: 5px 10px 5px 10px; overflow:auto; visibility: hidden;">
+        style="position: absolute; z-index: 1; left: 40px; top: 50px; width:300px; height:200px; background-color: white; border-style: dashed; border-color: darkblue; opacity: 0.7; padding: 5px 10px 5px 10px; overflow:auto; visibility: hidden;">
         <p style="font-family: Courier New">
           <b>INFO</b>
 
         <p>FPS: <b id="FPS" style="color: red;"></b></p>
+        <b>Move Forward:</b> <b style="color: green;"> ARROW KEY UP</b>
+        <br>
+        <b>Move Backward:</b> <b style="color: green;">ARROW KEY DOWN</b>
+        <br>
+        <b>Move Right:</b> <b style="color: green;">ARROW KEY RIGHT</b>
+        <br>
+        <b>Move Left:</b> <b style="color: green;">ARROW KEY LEFT</b>
+        <br>
+        <b>Camera Up:</b> <b style="color: darkslategray;">W</b>
+        <br>
+        <b>Camera Down:</b> <b style="color: darkslategrey;">S</b>
+
 
 
         </p>
@@ -142,16 +183,7 @@
         <p>
         <h2> <b>Control Panel</b> </h2>
         </p>
-        <!--
-          <p><b> Radio buttons </b></p>
-             <form> 
-           
-            <input type="radio" name="light" id="yesl" onchange="onRadioButtonChange(this.value);" value="1" checked>
-            Option 1 <br />
-            <input type="radio" name="light" onchange="onRadioButtonChange(this.value);" value="2"> Option 2 <br />
-            <input type="radio" name="light" onchange="onRadioButtonChange(this.value);" value="3"> Option 3 <br />
-          </form> 
-          <p></p> -->
+
         <b>Ambient Light Color</b>
         <div id="color1">
           <input type="color" id="favcolor" name="favcolor" value="#FFFFFF" onclick="this.blur()"
@@ -204,13 +236,7 @@
 
         <b> Enable sound </b><br>
         <input type="checkbox" id="chbx" onchange="onSoundBoxChange(this);" /> Sound ON<br />
-        <!-- <p><b> Drop-down list</b></p>
-          
-          <select id="drop-down" name="" onchange="onDropdownChange(this.value);">
-            <option value="1" selected>Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
-          </select> -->
+
 
         <audio id="audioPirate"></audio>
 
@@ -219,43 +245,7 @@
   </table>
 
 
-  <script>
-    function onSoundBoxChange(e) {
-      var audio = document.getElementById('audioPirate');
-      if (e.checked) {
-        audio.src = "Assets/pirate.mp3";
-        audio.loop = true;
-        audio.play();
-      }
-      else {
-        audio.src = "";
-        audio.play();
-      }
-      e.blur();
-    }
 
-    before = 0.0;
-    requestAnimationFrame(
-      function loop() {
-        now = Date.now();
-        fps = Math.round(1000 / (now - before));
-        before = now;
-        requestAnimationFrame(loop);
-        if (nFrame % 10 == 0) { document.getElementById("FPS").innerHTML = fps; }
-      });
-
-
-    function pageLoader() {
-      if (pageReady) {
-        document.getElementById("t").style.visibility = "visible";
-        document.getElementById("legend").style.visibility = "visible";
-        document.getElementById("Loading").style.visibility = "hidden";
-
-      }
-
-    }
-
-  </script>
 
 </body>
 
